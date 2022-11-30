@@ -7,26 +7,24 @@
               <input type="number" formControlName="categoria" class="form-control" placeholder="Categoría" [class.is-invalid]="categoriaInvalida"><br>
               <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" [class.is-invalid]="nombreInvalido"><br>
 
-              <!-- <div formGroupName="precios">
-                <label class="col-2 col-form-label">Precios</label>
-                <div class="row">
 
-                  <div class="col">
-                    <input type="number" class="form-control" formControlName="precio" placeholder="Precio">
-                  </div>
-                </div>
-              </div> -->
-
-
-              <div formGroupName="precios" class="input-group mb-3">
+              <div formArrayName="precios" class="input-group mb-3">
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Precios</label>
                 </div>
-                <select formControlName="precio" [(ngModel)]="articulo.value.precios['precio']" class="custom-select" id="inputGroupSelect01">
+                <select formControlName="precio" [(ngModel)]="articulo.value.precios[0].precio" class="custom-select" id="inputGroupSelect01">
                   <option value=12000>12000</option>
                   <option value=15000>15000</option>
                 </select>
               </div>
+
+              <!-- <div formArrayName="precios" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Precios</label>
+                </div>
+                <input type="text" formControlName="precio" [(ngModel)]="articulo.value.precios[0]['precio']" class="form-control" placeholder="Precio 1">
+                <input type="text" formControlName="precio" class="form-control" placeholder="Precio 2">
+              </div> -->
 
             </div>
         </div>

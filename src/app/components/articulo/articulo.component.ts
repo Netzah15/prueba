@@ -10,6 +10,7 @@ import { CrudService } from 'src/app/services/crud.service';
 export class ArticuloComponent implements OnInit {
 
   articulo: FormGroup;
+  
 
   constructor(private formB: FormBuilder, private crudS: CrudService) { }
 
@@ -34,15 +35,19 @@ export class ArticuloComponent implements OnInit {
       clave: new FormControl('', Validators.required),
       categoria: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
-      precios: new FormGroup({
-        precio: new FormControl()
-      }),
+      precios: new FormArray([
+        new FormGroup({
+          precio: new FormControl('')
+        })
+      ]),
       activo: new FormControl(true)
     });
   }
+  
 
   envArt(){
     console.log(this.articulo.value);
+    
     // this.crudS.envioArt(this.articulo.value).subscribe(
     //   (data:any)=>{
     //     console.log(data);
