@@ -18,7 +18,7 @@
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Precios</label>
                 </div>
-                <select formControlName="precio" [(ngModel)]="articulo.controls.precios[0].precio" class="custom-select" id="inputGroupSelect01">
+                <select formControlName="precio" [(ngModel)]="articulo.value.precios[0].precio" class="custom-select" id="inputGroupSelect01">
                   <option value=12000>12000</option>
                   <option value=15000>15000</option>
                 </select>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="center">
-          <button type="submit" class="btn btn-primary" style="margin-top: 10px;">ENVIAR</button>
+          <button type="submit" class="btn btn-primary" style="margin-top: 10px;" [disabled]="articulo.invalid">ENVIAR</button>
         </div>
     </form>
 </div>
