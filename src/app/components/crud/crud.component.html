@@ -5,8 +5,12 @@
             <div class="col-10 cat">
                 <div class="form-group">
                   <h2 class="text-center">CATEGORIA</h2>
-                  <input type="text" formControlName="clave" class="form-control" placeholder="Clave" [class.is-invalid]="categoriaInvalida"><br>
-                  <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" [class.is-invalid]="nombreInvalido"><br>
+                  <input type="text" formControlName="clave" class="form-control" placeholder="Clave" [class.is-invalid]="categoriaInvalida">
+                  <small class="text-danger" *ngIf="categoriaInvalida">Rellene el campo</small>
+                  <br>
+                  <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" [class.is-invalid]="nombreInvalido">
+                  <small class="text-danger" *ngIf="nombreInvalido">Rellene el campo</small>
+                  <br>
                 </div>
             </div>
         </div>

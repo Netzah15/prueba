@@ -3,16 +3,22 @@
         <div class="col-10 cat">
             <div class="form-group">
               <h2 class="text-center">ARTICULO</h2>
-              <input type="text" formControlName="clave" class="form-control" placeholder="Clave" [class.is-invalid]="claveInvalida"><br>
-              <input type="number" formControlName="categoria" class="form-control" placeholder="Categoría" [class.is-invalid]="categoriaInvalida"><br>
-              <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" [class.is-invalid]="nombreInvalido"><br>
+              <input type="text" formControlName="clave" class="form-control" placeholder="Clave" [class.is-invalid]="claveInvalida">
+              <small class="text-danger" *ngIf="claveInvalida">Rellene el campo</small>
+              <br>
+              <input type="number" formControlName="categoria" class="form-control" placeholder="Categoría" [class.is-invalid]="categoriaInvalida">
+              <small class="text-danger" *ngIf="categoriaInvalida">Rellene el campo</small>
+              <br>
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" [class.is-invalid]="nombreInvalido">
+              <small class="text-danger" *ngIf="nombreInvalido">Rellene el campo</small>
+              <br>
 
 
               <div formArrayName="precios" class="input-group mb-3">
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Precios</label>
                 </div>
-                <select formControlName="precio" [(ngModel)]="articulo.value.precios[0].precio" class="custom-select" id="inputGroupSelect01">
+                <select formControlName="precio" [(ngModel)]="articulo.controls.precios[0].precio" class="custom-select" id="inputGroupSelect01">
                   <option value=12000>12000</option>
                   <option value=15000>15000</option>
                 </select>

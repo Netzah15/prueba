@@ -48,11 +48,11 @@ export class ArticuloComponent implements OnInit {
   envArt(){
     console.log(this.articulo.value);
     
-    // this.crudS.envioArt(this.articulo.value).subscribe(
-    //   (data:any)=>{
-    //     console.log(data);
-    //   }
-    // )
+    this.crudS.envioArt(this.articulo.value).subscribe(
+      (data:any)=>{
+        console.log(data);
+      }
+    )
   }
 
   // addPrecio(){
