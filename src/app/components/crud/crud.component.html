@@ -1,0 +1,17 @@
+
+<div class="cont">
+    <form [formGroup]="categoria" (ngSubmit)="send()">
+        <div class="row" style="margin-top: 15px;"><br>
+            <div class="col-10 cat">
+                <div class="form-group">
+                  <h2 class="text-center">CATEGORIA</h2>
+                  <input type="text" formControlName="clave" class="form-control" placeholder="Clave" [class.is-invalid]="categoriaInvalida"><br>
+                  <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" [class.is-invalid]="nombreInvalido"><br>
+                </div>
+            </div>
+        </div>
+        <div class="center">
+            <button type="submit" class="btn btn-primary" [disabled]="categoria.invalid">ENVIAR</button>
+        </div>
+    </form>
+</div>

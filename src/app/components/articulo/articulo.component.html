@@ -1,0 +1,37 @@
+<div class="cont">
+    <form [formGroup]="articulo" (ngSubmit)="envArt()">
+        <div class="col-10 cat">
+            <div class="form-group">
+              <h2 class="text-center">ARTICULO</h2>
+              <input type="text" formControlName="clave" class="form-control" placeholder="Clave" [class.is-invalid]="claveInvalida"><br>
+              <input type="number" formControlName="categoria" class="form-control" placeholder="Categoría" [class.is-invalid]="categoriaInvalida"><br>
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" [class.is-invalid]="nombreInvalido"><br>
+
+              <!-- <div formGroupName="precios">
+                <label class="col-2 col-form-label">Precios</label>
+                <div class="row">
+
+                  <div class="col">
+                    <input type="number" class="form-control" formControlName="precio" placeholder="Precio">
+                  </div>
+                </div>
+              </div> -->
+
+
+              <div formGroupName="precios" class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Precios</label>
+                </div>
+                <select formControlName="precio" [(ngModel)]="articulo.value.precios['precio']" class="custom-select" id="inputGroupSelect01">
+                  <option value=12000>12000</option>
+                  <option value=15000>15000</option>
+                </select>
+              </div>
+
+            </div>
+        </div>
+        <div class="center">
+          <button type="submit" class="btn btn-primary" style="margin-top: 10px;">ENVIAR</button>
+        </div>
+    </form>
+</div>
