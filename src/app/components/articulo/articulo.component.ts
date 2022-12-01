@@ -35,9 +35,7 @@ export class ArticuloComponent implements OnInit {
       clave: new FormControl('', Validators.required),
       categoria: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
-      precios: new FormGroup({
-        precio: new FormControl('')
-      }),
+      precios: this.formB.array([]),
       activo: new FormControl(true)
     });
   }
@@ -53,8 +51,19 @@ export class ArticuloComponent implements OnInit {
     )
   }
 
-  // addPrecio(){
-  //   (<FormArray>this.articulo.controls['precios']).push(this.articulo.controls['precio']);
+  // get precios(){
+  //   return this.articulo.get('precios') as FormArray;
   // }
+
+  addPrecio(){
+    // (<FormArray>this.articulo.controls['precios']).push(this.articulo.controls['precio']);
+    const precios = this.articulo.get('precios') as FormArray;
+    const precioo = this.formB.group({
+      precio: [null]
+    })
+
+    precios.push(precioo);
+    // this.precios.push(this.formB.control("", Validators.required));
+  }
 
 }
