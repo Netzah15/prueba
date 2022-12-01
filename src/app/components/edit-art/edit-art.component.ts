@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from '../../services/crud.service';
 
 @Component({
@@ -11,8 +11,9 @@ export class EditArtComponent implements OnInit {
 
   articulo;
   articulos;
+  idActual;
 
-  constructor(private crudS: CrudService) { }
+  constructor(private crudS: CrudService, private formB: FormBuilder) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -33,9 +34,7 @@ export class EditArtComponent implements OnInit {
       clave: new FormControl('', Validators.required),
       categoria: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
-      precios: new FormGroup({
-        precio: new FormControl('')
-      }),
+      precios: this.formB.array([]),
       activo: new FormControl(true)
     });
   }
@@ -52,12 +51,36 @@ export class EditArtComponent implements OnInit {
     )
   }
 
-  editArticulo(){
+  getId(id){
+    this.idActual=id;
+    console.log(this.idActual);
+  }
+
+
+  editArticulo(){    
     console.log(this.articulo.value);
+    this.crudS.updateArt(this.articulo.value, this.idActual).subscribe(
+      (data:any)=>{
+        console.log(data);
+        // if(data.message){
+        //   // this.editadoBien();
+        // }else{
+        //   console.log("no hay");
+        // }
+      }
+    )
   }
 
   reload(){
     window.location.reload();
+  }
+
+  addPrecio(){
+    const precios = this.articulo.get('precios') as FormArray;
+    const precioo = this.formB.group({
+      precio: [null]
+    })
+    precios.push(precioo);
   }
 
 }

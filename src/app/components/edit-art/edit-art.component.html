@@ -15,7 +15,7 @@
           <hr class="linea">
         <button class="btn btn-danger" (click)="eliminarArt(art.id)">Eliminar</button>
         <!-- <button class="btn btn-primary" style="margin-left: 100px;" (click)="editarCat()">Editar</button> -->
-        <button type="button" class="btn btn-primary" style="margin-left: 100px;" data-toggle="modal" data-target="#exampleModal">Editar</button>
+        <button (click)="getId(art.id)" type="button" class="btn btn-primary" style="margin-left: 100px;" data-toggle="modal" data-target="#exampleModal">Editar</button>
       </div>
     </div>
 </div>
@@ -47,11 +47,18 @@
               <label for="message-text" class="col-form-label">Nombre:</label>
               <input formControlName="nombre" type="text" class="form-control" id="recipient-name">
             </div>
-            <div formGroupName="precios" class="form-group">
-                <label for="message-text" class="col-form-label">Precio:</label>
-                <input formControlName="precio" type="text" class="form-control" id="recipient-name">
+            <div formArrayName="precios" >
+              <label>Precios</label>
+
+                <div *ngFor="let item of articulo.get('precios')['controls']; index as i" [formGroupName]="i">
+                  <input type="text" class="form-control" name="" placeholder="Precio" formControlName="precio">
+                  
+                </div>
+             
             </div>
-            <button class="btn btn-primary">Guardar</button>
+            <button (click)="addPrecio()" type="button" class="btn btn-primary">Añadir precio</button>
+            <br>
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </form>
         </div>
         <div class="modal-footer">
