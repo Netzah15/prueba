@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
@@ -10,12 +11,15 @@ import { CrudService } from 'src/app/services/crud.service';
 export class ArticuloComponent implements OnInit {
 
   articulo: FormGroup;
+  categorias;
+  newCat=[];
   
 
-  constructor(private formB: FormBuilder, private crudS: CrudService) { }
+  constructor(private formB: FormBuilder, private crudS: CrudService, private router: Router) { }
 
   ngOnInit(): void {
     this.createForm();
+    this.getCategorias();
   }
 
   get claveInvalida(){
@@ -47,23 +51,30 @@ export class ArticuloComponent implements OnInit {
     this.crudS.envioArt(this.articulo.value).subscribe(
       (data:any)=>{
         console.log(data);
+        this.router.navigateByUrl('/edita');
       }
     )
   }
 
-  // get precios(){
-  //   return this.articulo.get('precios') as FormArray;
-  // }
-
   addPrecio(){
-    // (<FormArray>this.articulo.controls['precios']).push(this.articulo.controls['precio']);
     const precios = this.articulo.get('precios') as FormArray;
     const precioo = this.formB.group({
       precio: [null]
     })
-
     precios.push(precioo);
-    // this.precios.push(this.formB.control("", Validators.required));
+  }
+
+  getCategorias(){
+    this.crudS.getCategorias().subscribe(
+      (data:any)=>{        
+        this.categorias=data.data;
+        console.log(this.categorias);
+        
+        this.categorias.forEach(element =>
+          this.newCat.push(element['nombre'])
+          )        
+      }
+    )
   }
 
 }

@@ -6,7 +6,7 @@ export interface categoria {
 
 export interface articulo{
     clave: string,
-    categoria: number,
+    categoria: string,
     nombre: string,
     precios: any,
     activo: boolean

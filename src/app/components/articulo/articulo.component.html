@@ -6,8 +6,14 @@
               <input type="text" formControlName="clave" class="form-control" placeholder="Clave" [class.is-invalid]="claveInvalida">
               <small class="text-danger" *ngIf="claveInvalida">Rellene el campo</small>
               <br>
-              <input type="number" formControlName="categoria" class="form-control" placeholder="Categoría" [class.is-invalid]="categoriaInvalida">
-              <small class="text-danger" *ngIf="categoriaInvalida">Rellene el campo</small>
+              <!-- <input type="number" formControlName="categoria" class="form-control" placeholder="Categoría" [class.is-invalid]="categoriaInvalida">
+              <small class="text-danger" *ngIf="categoriaInvalida">Rellene el campo</small> -->
+              <h5>Categoria</h5>
+              <select class="form-control" formControlName="categoria">
+                <option class="form-control" value="{{item}}" *ngFor="let item of newCat; let i = index;">
+                  {{item}}
+                </option>
+              </select>
               <br>
               <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" [class.is-invalid]="nombreInvalido">
               <small class="text-danger" *ngIf="nombreInvalido">Rellene el campo</small>
@@ -15,20 +21,8 @@
 
               <div formArrayName="precios" >
                 <label>Precios</label>
-                <!-- <div class="input-group-prepend">
-                  <label  class="input-group-text" for="inputGroupSelect01">Precios</label>
-                </div> -->
-                <!-- <select formControlName="precio" [(ngModel)]="articulo.value.precios[0].precio" class="custom-select" id="inputGroupSelect01">
-                  <option value=12000>12000</option>
-                  <option value=15000>15000</option>
-                </select> -->
-
-                
-                  <!-- <input formControlName="precio" type="number" class="form-control" placeholder="Precio"> -->
-
                   <div *ngFor="let item of articulo.get('precios')['controls']; index as i" [formGroupName]="i">
                     <input type="text" class="form-control" name="" placeholder="Precio" formControlName="precio">
-                    
                   </div>
                
               </div>

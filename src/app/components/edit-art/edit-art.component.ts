@@ -13,11 +13,15 @@ export class EditArtComponent implements OnInit {
   articulos;
   idActual;
 
+  categorias;
+  newCat=[];
+
   constructor(private crudS: CrudService, private formB: FormBuilder) { }
 
   ngOnInit(): void {
     this.createForm();
     this.getArticulos();
+    this.getCategorias();
   }
 
   getArticulos(){
@@ -81,6 +85,19 @@ export class EditArtComponent implements OnInit {
       precio: [null]
     })
     precios.push(precioo);
+  }
+
+  getCategorias(){
+    this.crudS.getCategorias().subscribe(
+      (data:any)=>{        
+        this.categorias=data.data;
+        console.log(this.categorias);
+        
+        this.categorias.forEach(element =>
+          this.newCat.push(element['nombre'])
+          )        
+      }
+    )
   }
 
 }
