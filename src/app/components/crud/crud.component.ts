@@ -39,10 +39,12 @@ export class CrudComponent implements OnInit {
 
   send(){
     console.log(this.categoria.value);
+    const alerta = document.getElementById('alerta');    
 
     this.crudS.envioInf(this.categoria.value).subscribe(
       (data:any)=>{
         console.log(data);
+        alerta.style.display = 'block';
       }
     )
   }

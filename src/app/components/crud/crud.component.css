@@ -12,3 +12,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.alertaF{
+    width: 85%;
+    position: absolute;
+    top: 40%;
+    left: 7.5%;
+    right: 7.5%;
+}

@@ -1,0 +1,60 @@
+
+<h2 class="text-center">TODAS LAS CATEGORIAS</h2>
+
+<div class="contenedor">
+    <div class="card cent col-md-4 col-lg-5 col-xl-6" *ngFor="let cat of categorias; let i = index">
+      <div class="card-header">
+        Categoria número {{cat.id}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><strong>Clave:</strong>{{cat.clave}}</h5>
+        <p class="card-text"><strong>Nombre:</strong>{{cat.nombre}}</p>
+        <p class="card-text"><strong>Fecha de creación:</strong>{{cat.fechaCreado}}</p>
+
+          <hr class="linea">
+        <button class="btn btn-danger" (click)="eliminarCat(cat.id)">Eliminar</button>
+        <!-- <button class="btn btn-primary" style="margin-left: 100px;" (click)="editarCat()">Editar</button> -->
+        <button (click)="getId(cat.id)" class="btn btn-primary" style="margin-left: 100px;" data-toggle="modal" data-target="#exampleModal">Editar</button>
+      </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Ingrese nuevos valores</h3>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="categoria" (ngSubmit)="update()">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Clave:</label>
+                  <input formControlName="clave" type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Nombre:</label>
+                  <input formControlName="nombre" type="text" class="form-control" id="recipient-name">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="alert alert-success alert-dismissible alertaF" id="alerta" style="display: none;">
+  <a (click)="reload()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Completado!</strong> Se ha eliminado correctamente el elemento
+</div>
+
+<div class="alert alert-success alert-dismissible alertaF" id="alertaEdit" style="display: none;">
+  <a (click)="reload()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Se ha editado correctamente el elemento</strong>
+</div>
+
+
+

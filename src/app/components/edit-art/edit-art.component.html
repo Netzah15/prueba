@@ -1,0 +1,63 @@
+
+<h2 class="text-center">TODOS LOS ARTICULOS</h2>
+
+<div class="contenedor">
+    <div class="card cent col-md-4 col-lg-5 col-xl-6" *ngFor="let art of articulos; let i = index;">
+      <div class="card-header">
+        Articulo número {{art.id}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><strong>Clave:</strong> {{art.clave}}</h5>
+        <p class="card-text"><strong>Categoría:</strong> {{art.categoria['nombre']}}</p>
+        <p class="card-text"><strong>Nombre:</strong> {{art.nombre}}</p>
+        <p class="card-text"><strong>Precios:</strong> {{art.precios[i].precio}}</p>
+
+          <hr class="linea">
+        <button class="btn btn-danger" (click)="eliminarArt(art.id)">Eliminar</button>
+        <!-- <button class="btn btn-primary" style="margin-left: 100px;" (click)="editarCat()">Editar</button> -->
+        <button type="button" class="btn btn-primary" style="margin-left: 100px;" data-toggle="modal" data-target="#exampleModal">Editar</button>
+      </div>
+    </div>
+</div>
+
+<div class="alert alert-success alert-dismissible alertaF" id="alerta" style="display: none;">
+    <a (click)="reload()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Completado!</strong> Se ha eliminado correctamente el elemento
+  </div>
+  
+  
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Ingrese nuevos valores</h3>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="articulo" (ngSubmit)="editArticulo()">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Clave:</label>
+              <input formControlName="clave" type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Categoría:</label>
+                <input formControlName="categoria" type="text" class="form-control" id="recipient-name">
+              </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Nombre:</label>
+              <input formControlName="nombre" type="text" class="form-control" id="recipient-name">
+            </div>
+            <div formGroupName="precios" class="form-group">
+                <label for="message-text" class="col-form-label">Precio:</label>
+                <input formControlName="precio" type="text" class="form-control" id="recipient-name">
+            </div>
+            <button class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -8,20 +8,24 @@ import { CrudComponent } from './components/crud/crud.component';
 import { HomeComponent } from './components/home/home.component';
 import { ArticuloComponent } from './components/articulo/articulo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditCatComponent } from './components/edit-cat/edit-cat.component';
+import { EditArtComponent } from './components/edit-art/edit-art.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CrudComponent,
     HomeComponent,
-    ArticuloComponent
+    ArticuloComponent,
+    EditCatComponent,
+    EditArtComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

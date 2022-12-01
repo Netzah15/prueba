@@ -1,0 +1,26 @@
+.cent{
+    margin-top: 10px;
+
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.contenedor{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.linea{
+    width: 95%;
+    height: 1.5px;
+    background-color: gray;
+}
+
+.alertaF{
+    width: 85%;
+    position: absolute;
+    top: 40%;
+    left: 7.5%;
+    right: 7.5%;
+}
