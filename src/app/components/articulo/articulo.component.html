@@ -13,24 +13,21 @@
               <small class="text-danger" *ngIf="nombreInvalido">Rellene el campo</small>
               <br>
 
-
-              <div formArrayName="precios" class="input-group mb-3">
+              <div formGroupName="precios" class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Precios</label>
+                  <label  class="input-group-text" for="inputGroupSelect01">Precios</label>
                 </div>
-                <select formControlName="precio" [(ngModel)]="articulo.value.precios[0].precio" class="custom-select" id="inputGroupSelect01">
+                <!-- <select formControlName="precio" [(ngModel)]="articulo.value.precios[0].precio" class="custom-select" id="inputGroupSelect01">
                   <option value=12000>12000</option>
                   <option value=15000>15000</option>
-                </select>
+                </select> -->
+
+                
+                  <input formControlName="precio" type="number" class="form-control" placeholder="Precio">
+               
               </div>
 
-              <!-- <div formArrayName="precios" class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Precios</label>
-                </div>
-                <input type="text" formControlName="precio" [(ngModel)]="articulo.value.precios[0]['precio']" class="form-control" placeholder="Precio 1">
-                <input type="text" formControlName="precio" class="form-control" placeholder="Precio 2">
-              </div> -->
+              <p>{{articulo.value | json}}</p>
 
             </div>
         </div>

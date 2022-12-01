@@ -35,11 +35,9 @@ export class ArticuloComponent implements OnInit {
       clave: new FormControl('', Validators.required),
       categoria: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
-      precios: new FormArray([
-        new FormGroup({
-          precio: new FormControl()
-        })
-      ]),
+      precios: new FormGroup({
+        precio: new FormControl('')
+      }),
       activo: new FormControl(true)
     });
   }
@@ -48,11 +46,11 @@ export class ArticuloComponent implements OnInit {
   envArt(){
     console.log(this.articulo.value);
     
-    // this.crudS.envioArt(this.articulo.value).subscribe(
-    //   (data:any)=>{
-    //     console.log(data);
-    //   }
-    // )
+    this.crudS.envioArt(this.articulo.value).subscribe(
+      (data:any)=>{
+        console.log(data);
+      }
+    )
   }
 
   // addPrecio(){
