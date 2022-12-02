@@ -68,7 +68,7 @@ export class ArticuloComponent implements OnInit {
     this.crudS.getCategorias().subscribe(
       (data:any)=>{        
         this.categorias=data.data;
-        console.log(this.categorias);
+        // console.log(this.categorias);
         
         this.categorias.forEach(element =>
           this.newCat.push(element['nombre'])
